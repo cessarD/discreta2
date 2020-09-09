@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Valor A:</label>
+    <input type="number" id="A">
+    <br><br>
+    <label>Valor B:</label>
+    <input type="number" id="B">
+    <br>
+    <br>
+    <button onclick="per()">Permutar</button>
+    <button onclick="com()">Combinar</button>
+    <button onclick="com2()">Combinar con repeticion</button>
+    <br>
+    <br>
+    <table id="resultados" border="1" style="border-collapse: collapse;">   </table>
+        <label>Cantidad de elementos:</label>
+    <input type="number" id="N">
+    <br><br>
+    <label>Valor 1:</label>
+    <input type="number" id="m">
+    <br>
+    <br>
+    <label>Valor 2:</label>
+    <input type="number" id="n">
+    <br>
+    <br>
+    <label>Valor 3:</label>
+    <input type="number" id="o">
+    <br>
+    <br>
+    <button onclick="per2()">Permutar</button>
+    <table id="resultados2" border="1" style="border-collapse: collapse;"></table>
+ 
+    <script>
+        function per2(){
+            x=document.getElementById("N").value;
+            a=document.getElementById("m").value;
+            b=document.getElementById("n").value;
+            c=document.getElementById("o").value;
+            document.getElementById("resultados2").innerHTML=`
+           
+            <th>Resultado<th>
+            `;
+              
+            valor=factorial(x)/(factorial(a)*factorial(b)*factorial(c));
+                    document.getElementById("resultados2").innerHTML+=`
+      
+            <th  style="background-color:aqua;">${valor}<th>`;
+         
+                 
+        }
+        function per(){
+            x=document.getElementById("A").value;
+            y=document.getElementById("B").value;
+            document.getElementById("resultados").innerHTML=`
+            <th>Operacion<th>
+            <th>Resultado<th>
+            `;
+              
+            for (j=0; j<x; j++) {
+                valor=factorial(x)/factorial(x-(j+1));
+                if(y==(j+1)){
+                    document.getElementById("resultados").innerHTML+=`
+            <th style="background-color:aqua;">${x}P${j+1}<th>
+            <th  style="background-color:aqua;">${valor}<th>`;
+                }else{
+                    document.getElementById("resultados").innerHTML+=`
+            <th>${x}P${j+1}<th>
+            <th>${valor}<th>
+            `;
+                }
+    }
+        }
+    function com(){
+            x=document.getElementById("A").value;
+            y=document.getElementById("B").value;
+          
+            document.getElementById("resultados").innerHTML=`
+            <th>Operacion<th>
+            <th>Resultado<th>
+            `;
+         
+            
+            for (j=0; j<x; j++) {
+                inf=factorial(j+1)*factorial(x-(j+1));
+                valor=factorial(x)/inf;
+                if(y==(j+1)){
+                    document.getElementById("resultados").innerHTML+=`
+            <th style="background-color:aqua;">${x}C${j+1}<th>
+            <th  style="background-color:aqua;">${valor}<th>`;
+                }else{
+                    document.getElementById("resultados").innerHTML+=`
+            <th>${x}C${j+1}<th>
+            <th>${valor}<th>
+            `;
+                }
+        
+    }
+
+
+        }
+        function com2(){
+            var x=document.getElementById("A").value;
+            var y=document.getElementById("B").value;
+            x=parseInt(x,10);
+            y=parseInt(y,10);
+            document.getElementById("resultados").innerHTML=`
+            <th>Operacion<th>
+            <th>Resultado<th>
+            `;
+         
+            
+            for (var j=1; j<=x; j++) {
+                var b=x+(j-1);
+               
+                valor=factorial(b)/(factorial(j)*factorial(x-1));
+                if(y==(j)){
+                    document.getElementById("resultados").innerHTML+=`
+            <th style="background-color:aqua;">${x}C${j}<th>
+            <th  style="background-color:aqua;">${valor}<th>`;
+                }else{
+                    document.getElementById("resultados").innerHTML+=`
+            <th>${x}C${j}<th>
+            <th>${valor}<th>
+            `;
+                }
+        
+    }
+
+
+        }
+
+        function factorial (n) {
+	var total = 1; 
+	for (i=1; i<=n; i++) {
+		total = total * i; 
+	}
+	return total; 
+}
+    </script>
+</body>
+</html>
