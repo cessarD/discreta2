@@ -16,7 +16,12 @@ Triángulo de Pascal
 
 <script>
     
-
+  /*  function factorialRecursivo (n) { 
+	if (n == 0){ 
+		return 1; 
+	}
+	return n * factorialRecursivo (n-1); 
+}*/
 function factorial(p) {
     f = 1;
     for (i = 1; i <= p; i++) {
@@ -62,6 +67,7 @@ function tabla(filas) {
             } else texto += "";
             texto += "</td>";
         }
+       
         texto += "</tr>";
     }
     texto += "</table>";
